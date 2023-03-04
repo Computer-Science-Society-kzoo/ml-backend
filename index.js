@@ -33,7 +33,7 @@ app.get("/duure_mall/", (req, res) => {
 app.get("/derik", (req, res) => {
   input = req.query.input; 
   if (!input || input == "" ) {
-    res.send("Hello Luke. Please add parameter to the end of the url: /derik?input=DATA");
+    res.send("Hello Derik. Please add parameter to the end of the url: /derik?input=DATA");
   } else {
     res.send("Coming soon");
   }
