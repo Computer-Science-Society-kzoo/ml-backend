@@ -4,6 +4,7 @@ const { spawn } = require("child_process");
 const os = require("os");
 const app = express();
 const PORT = 9000;
+const pythonVersion = "python";
 
 app.get("/", (req, res) => {
   res.send("Hello World");
@@ -44,7 +45,7 @@ function runPythonScript(pythonV, file, input) {
 }
 
 async function GPT3_5(input) {
-  return await runPythonScript("python3", "aleksandr.py", input);
+  return await runPythonScript(pythonVersion, "aleksandr.py", input);
 }
 
 app.get("/aleksandr", async (req, res) => {
