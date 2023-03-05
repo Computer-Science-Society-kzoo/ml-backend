@@ -56,6 +56,7 @@ response = openai.Completion.create(model="text-davinci-003", prompt=prompt, tem
 
 answer = str(response.choices[0].text)
 answer = answer.replace(" ", "")
+answer = answer.replace("\n", "")
 answer = answer.replace("notconfident", "not confident")
 
 print(answer)
