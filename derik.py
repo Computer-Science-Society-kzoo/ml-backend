@@ -95,7 +95,7 @@ def make_prediction(model, X_new):
     return classes_x
 
 
-model = pickle.load(open('models/d/model.pkl', 'rb'))
+model = pickle.load(open('models/d/model_pkl', 'rb'))
 
 
 input_1 = sys.argv[1]
