@@ -79,6 +79,8 @@ def pad_X(X, desired_sequence_length=57):
     
     pad = np.zeros(shape=(sequence_length_difference, 50))
 
+    print(x)
+    print(pad)
     X_copy[i] = np.concatenate([x, pad])
   
   return np.array(X_copy).astype(float)
