@@ -25,7 +25,7 @@ def add_to_dict(d, filename):
       except:
         continue
 
-add_to_dict(words, '/Users/deriktorres/Desktop/COMP486/ML Project/Final/glove.6B.50d.txt')
+add_to_dict(words, 'models/d/glove.6B.50d.txt')
 
 # We need to tokenize and so we create a tokenizer
 tokenizer = nltk.RegexpTokenizer(r"\w+")
@@ -95,7 +95,7 @@ def make_prediction(model, X_new):
     classes_x = np.argmax(predict_x, axis=1)
     return classes_x
 
-reconstructed_model = keras.models.load_model("neural_model")
+reconstructed_model = keras.models.load_model("models/d/neural_model")
 
 
 input_1 = sys.argv[1]
