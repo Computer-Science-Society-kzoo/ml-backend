@@ -71,7 +71,7 @@ app.get("/aleksandr", async (req, res) => {
       "Hello Aleksandr. Please add parameter to the end of the url: /aleksandr?input=DATA"
     );
   } else {
-    response = await GPT3_5(input);
+    let response = await GPT3_5(input);
     response = response.replace(/\n/g, "");
     res.send({"GPT3.5": response});
   }
