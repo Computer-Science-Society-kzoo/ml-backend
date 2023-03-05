@@ -25,7 +25,7 @@ def add_to_dict(d, filename):
       except:
         continue
 
-add_to_dict(words, 'models/d/glove.6B.50d.txt')
+add_to_dict(words, 'models/d/glove.txt')
 
 # We need to tokenize and so we create a tokenizer
 tokenizer = nltk.RegexpTokenizer(r"\w+")
@@ -79,8 +79,6 @@ def pad_X(X, desired_sequence_length=57):
     
     pad = np.zeros(shape=(sequence_length_difference, 50))
 
-    print(x)
-    print(pad)
     X_copy[i] = np.concatenate([x, pad])
   
   return np.array(X_copy).astype(float)
