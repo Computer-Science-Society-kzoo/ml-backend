@@ -4,7 +4,7 @@ const { spawn } = require("child_process");
 const os = require("os");
 const app = express();
 const PORT = 9000;
-const pythonVersion = "python";
+const pythonVersion = "python3";
 
 app.get("/", (req, res) => {
   res.send("Hello World");
