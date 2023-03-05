@@ -106,8 +106,8 @@ app.get("/derik", async (req, res) => {
       "Hello Derik. Please add parameter to the end of the url: /derik?input=DATA"
     );
   } else {
-    let response = await Neural(input);
-    response = response.replace(/\n/g, "");
-    res.send({"Neural": response});
+    res.send(
+      "Hello Derik. Your model is too heavy. "
+    );
   }
 });
