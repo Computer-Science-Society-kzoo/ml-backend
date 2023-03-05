@@ -64,6 +64,11 @@ async function GPT3_5(input) {
   return await runPythonScript(pythonVersion, "aleksandr.py", input);
 }
 
+async function Tree(input) {
+  return await runPythonScript(pythonVersion, "duure_mall.py", input);
+}
+
+
 app.get("/aleksandr", async (req, res) => {
   input = req.query.input;
   if (!input || input == "") {
@@ -77,14 +82,16 @@ app.get("/aleksandr", async (req, res) => {
   }
 });
 
-app.get("/duure_mall/", (req, res) => {
+app.get("/duure_mall/", async (req, res) => {
   input = req.query.input;
   if (!input || input == "") {
     res.send(
       "Hello Duurenbayar and Mallory. Please add parameter to the end of the url: /duure_mall?input=DATA"
     );
   } else {
-    res.send("Coming soon");
+    let response = await Tree(input);
+    response = response.replace(/\n/g, "");
+    res.send({"GPT3.5": response});
   }
 });
 
