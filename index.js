@@ -68,6 +68,10 @@ async function Tree(input) {
   return await runPythonScript(pythonVersion, "duure_mall.py", input);
 }
 
+async function Neural(input){
+  return await runPythonScript(pythonVersion, "derik.py", input);
+}
+
 
 app.get("/aleksandr", async (req, res) => {
   input = req.query.input;
@@ -95,13 +99,15 @@ app.get("/duure_mall/", async (req, res) => {
   }
 });
 
-app.get("/derik", (req, res) => {
+app.get("/derik", async (req, res) => {
   input = req.query.input;
   if (!input || input == "") {
     res.send(
       "Hello Derik. Please add parameter to the end of the url: /derik?input=DATA"
     );
   } else {
-    res.send("Coming soon");
+    let response = await Neural(input);
+    response = response.replace(/\n/g, "");
+    res.send({"Neural": response});
   }
 });
