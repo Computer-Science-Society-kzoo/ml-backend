@@ -91,7 +91,7 @@ app.get("/duure_mall/", async (req, res) => {
   } else {
     let response = await Tree(input);
     response = response.replace(/\n/g, "");
-    res.send({"GPT3.5": response});
+    res.send({"Tree": response});
   }
 });
 
