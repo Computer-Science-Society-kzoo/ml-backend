@@ -72,7 +72,7 @@ app.get("/aleksandr", async (req, res) => {
     );
   } else {
     response = await GPT3_5(input);
-    responce = response.replace(/\n/g, "");
+    response = response.replace(/\n/g, "");
     res.send({"GPT3.5": response});
   }
 });
