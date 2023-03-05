@@ -1,4 +1,5 @@
-import pickle
+import tensorflow as tf
+from tensorflow import keras
 import numpy as np
 import nltk
 import sys
@@ -24,7 +25,7 @@ def add_to_dict(d, filename):
       except:
         continue
 
-add_to_dict(words, 'models/d/glove.6B.50d.txt')
+add_to_dict(words, '/Users/deriktorres/Desktop/COMP486/ML Project/Final/glove.6B.50d.txt')
 
 # We need to tokenize and so we create a tokenizer
 tokenizer = nltk.RegexpTokenizer(r"\w+")
@@ -94,16 +95,15 @@ def make_prediction(model, X_new):
     classes_x = np.argmax(predict_x, axis=1)
     return classes_x
 
-
-model = pickle.load(open('models/d/model_pkl', 'rb'))
+reconstructed_model = keras.models.load_model("neural_model")
 
 
 input_1 = sys.argv[1]
-prediction = make_prediction(model, input_1)
+prediction = make_prediction(reconstructed_model, input_1)
 
 if prediction == 0:
-    print("not confident")
+    print("Not Confident")
 elif prediction == 1:
-    print("neutral")
+    print("Neutral")
 else:
-    print("confident")
+    print("Confident")
