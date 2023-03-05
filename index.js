@@ -5,6 +5,21 @@ const os = require("os");
 const app = express();
 const PORT = 9000;
 const pythonVersion = "python3";
+var cors = require("cors");
+var whitelist = ['http://localhost:3000', "http://localhost:3001" /** other domains if any */]
+var corsOptions = {
+  credentials: true,
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(null, true)
+      //callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+app.use(cors(corsOptions)); // !! SHOULD BE CHANGE TO ONLY ALLOW OUR FRONTEND !!
+
 
 app.get("/", (req, res) => {
   res.send("Hello World");
