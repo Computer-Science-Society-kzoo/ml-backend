@@ -6,6 +6,7 @@ const app = express();
 const PORT = 9000;
 const pythonVersion = "python3";
 var cors = require("cors");
+const { response } = require("express");
 var whitelist = ['http://localhost:3000', "http://localhost:3001" /** other domains if any */]
 var corsOptions = {
   credentials: true,
@@ -71,6 +72,7 @@ app.get("/aleksandr", async (req, res) => {
     );
   } else {
     response = await GPT3_5(input);
+    responce = response.replace(/\n/g, "");
     res.send({"GPT3.5": response});
   }
 });
